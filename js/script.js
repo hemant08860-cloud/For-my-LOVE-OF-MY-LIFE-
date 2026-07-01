@@ -1,3 +1,22 @@
+// ===== Sparkles =====
+
+const sparkles = document.getElementById("sparkles");
+
+for(let i = 0; i < 40; i++){
+
+    const sparkle = document.createElement("span");
+
+    sparkle.className = "sparkle";
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+
+    sparkle.style.animationDelay = Math.random() * 5 + "s";
+    sparkle.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+    sparkles.appendChild(sparkle);
+
+}
 const messages = [
 
     "🌸 Preparing birthday surprises...",
