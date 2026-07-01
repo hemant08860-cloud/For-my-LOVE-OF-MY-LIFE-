@@ -39,21 +39,30 @@ body{
 }
 
 .background{
-
     position:absolute;
     inset:0;
 
-    background:
-    linear-gradient(
-    -45deg,
-    #fff8fb,
-    #ffd9ea,
-    #f2e7ff,
-    #fffdfc);
+    background:linear-gradient(
+        -45deg,
+        #fff8fb,
+        #ffd6e7,
+        #efe2ff,
+        #fffdf8,
+        #ffe8f1
+    );
 
-    background-size:400% 400%;
+    background-size:500% 500%;
 
-    animation:gradient 15s ease infinite;
+    animation:aurora 18s ease infinite;
+}
+
+@keyframes aurora{
+
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+
+}
 
 }
 
