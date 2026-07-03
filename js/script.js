@@ -6,7 +6,10 @@
 // Change this date if needed
 const unlockDate = new Date("January 16, 2027 00:00:00").getTime();
 
-const countdown = document.getElementById("countdown");
+const daysBox = document.getElementById("days");
+const hoursBox = document.getElementById("hours");
+const minutesBox = document.getElementById("minutes");
+const secondsBox = document.getElementById("seconds");
 
 const timer = setInterval(() => {
 
@@ -32,8 +35,10 @@ const timer = setInterval(() => {
         / 1000
     );
 
-    countdown.innerHTML =
-        `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+daysBox.textContent = days;
+hoursBox.textContent = String(hours).padStart(2, "0");
+minutesBox.textContent = String(minutes).padStart(2, "0");
+secondsBox.textContent = String(seconds).padStart(2, "0");
 
     // Unlock website
     if(distance <= 0){
