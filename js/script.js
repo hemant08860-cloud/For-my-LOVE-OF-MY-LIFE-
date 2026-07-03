@@ -1,72 +1,103 @@
-// ===== Sparkles =====
+// ==========================
+// PROJECT AYE AYE MADAM
+// Countdown System
+// ==========================
 
-const sparkles = document.getElementById("sparkles");
+// Change this date if needed
+const unlockDate = new Date("January 16, 2027 00:00:00").getTime();
 
-for(let i = 0; i < 40; i++){
+const countdown = document.getElementById("countdown");
 
-    const sparkle = document.createElement("span");
+const timer = setInterval(() => {
 
-    sparkle.className = "sparkle";
+    const now = new Date().getTime();
 
-    sparkle.style.left = Math.random() * 100 + "vw";
-    sparkle.style.top = Math.random() * 100 + "vh";
+    const distance = unlockDate - now;
 
-    sparkle.style.animationDelay = Math.random() * 5 + "s";
-    sparkle.style.animationDuration = (2 + Math.random() * 3) + "s";
+    // Time calculations
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-    sparkles.appendChild(sparkle);
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+    countdown.innerHTML =
+        `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+
+    // Unlock website
+    if(distance <= 0){
+
+        clearInterval(timer);
+
+        document.getElementById("countdown-screen").style.display="none";
+
+        document.getElementById("loader").style.display="flex";
+
+        startLoader();
+
+    }
+
+},1000);
+
+// ==========================
+// Loader
+// ==========================
+
+function startLoader(){
+
+    const messages=[
+
+        "🌸 Preparing birthday surprises...",
+        "✨ Gathering warm wishes...",
+        "🎨 Decorating memories...",
+        "📚 Packing board luck...",
+        "💖 Almost Ready...",
+        "🫡 Mission Ready!"
+
+    ];
+
+    const bar=document.querySelector(".progress-bar");
+    const text=document.getElementById("loadingMessage");
+
+    let width=0;
+    let i=0;
+
+    const loading=setInterval(()=>{
+
+        width++;
+
+        bar.style.width=width+"%";
+
+        if(width%20===0 && i<messages.length){
+
+            text.innerHTML=messages[i];
+            i++;
+
+        }
+
+        if(width>=100){
+
+            clearInterval(loading);
+
+            document.getElementById("loader").style.display="none";
+
+            document.getElementById("hero").style.display="flex";
+
+            document.body.style.overflow="auto";
+
+        }
+
+    },40);
 
 }
-const messages = [
-
-    "🌸 Preparing birthday surprises...",
-    "✨ Gathering warm wishes...",
-    "🎨 Decorating memories...",
-    "📚 Packing board luck...",
-    "💖 Almost Ready...",
-    "🫡 Mission Ready!"
-
-];
-
-const bar = document.querySelector(".progress-bar");
-const text = document.getElementById("loadingMessage");
-
-let width = 0;
-let index = 0;
-
-const loading = setInterval(() => {
-
-    width++;
-
-    bar.style.width = width + "%";
-
-    if (width % 20 === 0 && index < messages.length) {
-
-        text.textContent = messages[index];
-        index++;
-
-    }
-
-    if (width >= 100) {
-
-        clearInterval(loading);
-
-        setTimeout(() => {
-
-            document.getElementById("loader").style.opacity = "0";
-
-            setTimeout(() => {
-
-                document.getElementById("loader").style.display = "none";
-
-                document.getElementById("hero").style.display = "flex";
-
-                document.body.style.overflow = "auto";
-
-            }, 800);
-
-        }, 500);
-
-    }
-
-}, 40);
