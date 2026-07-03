@@ -213,7 +213,6 @@ body{
 #loader{
 
     display:none;
-
 }
 
 /* =========================
@@ -239,5 +238,61 @@ body{
         transform:translateY(-10px);
 
     }
+
+}
+
+/* =========================
+   Hero Note
+========================= */
+
+.hero-note{
+
+    margin-top:35px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.42);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.55);
+
+    box-shadow:0 10px 30px rgba(255,182,193,.15);
+
+    animation:float 5s ease-in-out infinite;
+
+}
+
+.note-title{
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:#d63384;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+
+}
+
+.note-text{
+
+    color:#555;
+
+    line-height:1.9;
+
+    font-size:1rem;
+
+}
+
+.note-text strong{
+
+    color:#ff4f88;
 
 }
